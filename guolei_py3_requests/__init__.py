@@ -10,17 +10,88 @@ Email：[174000902@qq.com]
 Github：https://github.com/guolei19850528/guolei_py3_requests
 =================================================
 """
-import typing
 from inspect import isfunction
-from typing import Union, Iterable, Callable
+from typing import Union, Iterable, Callable, Any
 import requests
 from addict import Dict
 from requests import Response, Session
 
 
+class RequestsResponseCallable(object):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def response(response: Response = None):
+        if isinstance(response, Response):
+            return response
+        return None
+
+    @staticmethod
+    def status_code(response: Response = None):
+        if RequestsResponseCallable.response(response=response):
+            return response.status_code
+        return -1
+
+    @staticmethod
+    def status_code_compare(response: Response = None, status_code: int = 0):
+        if RequestsResponseCallable.response(response=response):
+            return response.status_code == status_code
+        return False
+
+    @staticmethod
+    def status_code_200(response: Response = None):
+        return RequestsResponseCallable.status_code_compare(response=response, status_code=200)
+
+    @staticmethod
+    def status_code_200_text(response: Response = None):
+        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+            return response.text
+        return ""
+
+    @staticmethod
+    def status_code_200_content(response: Response = None):
+        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+            return response.content
+        return b""
+
+    @staticmethod
+    def status_code_200_raw(response: Response = None):
+        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+            return response.raw
+        return None
+
+    @staticmethod
+    def status_code_200_json(
+            response: Response = None,
+            response_json_args: Iterable = (),
+            response_json_kwargs: Union[dict, Dict] = Dict({})
+    ):
+        response_json_kwargs = Dict(response_json_kwargs)
+        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+            return response.json(*response_json_args, **response_json_kwargs)
+        return {}
+
+    @staticmethod
+    def status_code_200_json_addict(
+            response: Response = None,
+            response_json_args: Iterable = (),
+            response_json_kwargs: Union[dict, Dict] = Dict({})
+    ):
+        if RequestsResponseCallable.status_code_compare(response, 200):
+            return Dict(
+                RequestsResponseCallable.status_code_200_json(
+                    response=response,
+                    response_json_args=response_json_args,
+                    response_json_kwargs=response_json_kwargs
+                )
+            )
+        return Dict({})
+
+
 def requests_request(
-        requests_response_callable: Callable[[Response], typing.Any] = None,
-        requests_request_args: Union[Iterable] = (),
+        requests_response_callable: Callable = None,
+        requests_request_args: Iterable = (),
         requests_request_kwargs: Union[dict, Dict] = Dict({})
 ):
     """
@@ -40,8 +111,8 @@ def requests_request(
 
 def request_session_request(
         session: Session = None,
-        requests_response_callable: Callable[[Session, Response], typing.Any] = None,
-        requests_request_args: Union[Iterable] = (),
+        requests_response_callable: Callable = None,
+        requests_request_args: Iterable = (),
         requests_request_kwargs: Union[dict, Dict] = Dict({})
 ):
     """
