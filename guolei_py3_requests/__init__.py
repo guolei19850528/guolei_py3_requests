@@ -45,19 +45,19 @@ class RequestsResponseCallable(object):
 
     @staticmethod
     def status_code_200_text(response: Response = None):
-        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+        if RequestsResponseCallable.status_code_200(response=response):
             return response.text
         return ""
 
     @staticmethod
     def status_code_200_content(response: Response = None):
-        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+        if RequestsResponseCallable.status_code_200(response=response):
             return response.content
         return b""
 
     @staticmethod
     def status_code_200_raw(response: Response = None):
-        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+        if RequestsResponseCallable.status_code_200(response=response):
             return response.raw
         return None
 
@@ -68,7 +68,7 @@ class RequestsResponseCallable(object):
             response_json_kwargs: Union[dict, Dict] = Dict({})
     ):
         response_json_kwargs = Dict(response_json_kwargs)
-        if RequestsResponseCallable.status_code_compare(response=response, status_code=200):
+        if RequestsResponseCallable.status_code_200(response=response):
             return response.json(*response_json_args, **response_json_kwargs)
         return {}
 
