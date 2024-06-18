@@ -78,7 +78,7 @@ class RequestsResponseCallable(object):
             response_json_args: Iterable = (),
             response_json_kwargs: Union[dict, Dict] = Dict({})
     ):
-        if RequestsResponseCallable.status_code_compare(response, 200):
+        if RequestsResponseCallable.status_code_200(response=response):
             return Dict(
                 RequestsResponseCallable.status_code_200_json(
                     response=response,
