@@ -1,5 +1,9 @@
 requests
 addict
+beautifulsoup4
+lxml
+xmltodict
 retrying
+pydantic
 setuptools
 wheel
