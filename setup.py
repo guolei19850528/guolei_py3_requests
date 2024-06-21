@@ -5,8 +5,8 @@ from setuptools import setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-setup(name="guolei_py3_requests",
-      version="0.0.5",
+setup(name="guolei-py3-requests",
+      version="0.0.6",
       description="a python3 requests library by guolei",
       long_description=long_description,
       long_description_content_type="text/markdown",
