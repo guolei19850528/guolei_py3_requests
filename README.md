@@ -11,7 +11,7 @@
 ## installation tutorial
 
 ```shell
-pip install guolei_py3_requests
+pip install guolei-py3-requests
 ```
 
 ## catalog description
