@@ -11,7 +11,8 @@ Github：https://github.com/guolei19850528/guolei_py3_requests
 =================================================
 """
 from inspect import isfunction
-from typing import Union, Iterable, Callable, Any
+from typing import Union, Iterable, Callable
+
 import requests
 from addict import Dict
 from requests import Response, Session
@@ -92,7 +93,7 @@ class RequestsResponseCallable(object):
 def requests_request(
         requests_response_callable: Callable = None,
         requests_request_args: Iterable = (),
-        requests_request_kwargs: Union[dict, Dict] = Dict({})
+        requests_request_kwargs: dict = {}
 ):
     """
     call requests.request
@@ -113,7 +114,7 @@ def request_session_request(
         session: Session = None,
         requests_response_callable: Callable = None,
         requests_request_args: Iterable = (),
-        requests_request_kwargs: Union[dict, Dict] = Dict({})
+        requests_request_kwargs: dict = {}
 ):
     """
     call requests.Session.request
