@@ -66,7 +66,7 @@ class RequestsResponseCallable(object):
     def status_code_200_json(
             response: Response = None,
             response_json_args: Iterable = (),
-            response_json_kwargs: Union[dict, Dict] = Dict({})
+            response_json_kwargs: dict = {}
     ):
         response_json_kwargs = Dict(response_json_kwargs)
         if RequestsResponseCallable.status_code_200(response=response):
@@ -77,7 +77,7 @@ class RequestsResponseCallable(object):
     def status_code_200_json_addict(
             response: Response = None,
             response_json_args: Iterable = (),
-            response_json_kwargs: Union[dict, Dict] = Dict({})
+            response_json_kwargs: dict = {}
     ):
         if RequestsResponseCallable.status_code_200(response=response):
             return Dict(
