@@ -1,26 +1,17 @@
-## 介绍
+# guolei-py3-requests
 
-**guolei python3 requests library**
+### a python3 library for requests by guolei
 
-## 软件架构
-
-~python 3.*
-
-## 安装教程
-
-```shell
-pip install guolei-py3-requests
-```
-
-## 目录说明
-
-### request 示例
+# Example
 ```python
-import guolei_py3_requests
+from guolei_py3_requests.library import (
+    request,
+    ResponseCallable
+)
 
-response = guolei_py3_requests.requests_request(
-    requests_response_callable=guolei_py3_requests.RequestsResponseCallable.status_code_200_json,
-    requests_request_args=(),
-    requests_request_kwargs={}
+result = request(
+    response_callable=ResponseCallable.text,
+    method="GET",
+    url="your url"
 )
 ```
