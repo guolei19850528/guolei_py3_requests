@@ -4,7 +4,6 @@ from typing import Callable, Sequence, Union
 
 import requests
 from addict import Dict
-from bs4 import BeautifulSoup
 from requests import Response
 
 

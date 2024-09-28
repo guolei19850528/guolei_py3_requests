@@ -6,7 +6,7 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(name="guolei-py3-requests",
-      version="1.0.1",
+      version="1.0.2",
       description="a python3 library for requests by guolei",
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -21,7 +21,6 @@ setup(name="guolei-py3-requests",
           "addict",
           "beautifulsoup4",
           "lxml",
-          "lxml-xml",
           "xmltodict",
           "retrying",
           "jsonschema",

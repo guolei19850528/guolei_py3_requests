@@ -9,7 +9,7 @@ from guolei_py3_requests.library import request
 
 class RequestsTestCase(unittest.TestCase):
     def test_library(self):
-        print(request(url="https://www.baidu.com"))
+        print(request(method="GET",url="https://www.baidu.com"))
         self.assertTrue(True, "ok")  # add assertion here
 
 
